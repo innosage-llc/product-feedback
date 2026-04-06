@@ -1,0 +1,50 @@
+name: Apply product label
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  issues: write
+
+jobs:
+  label-product:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply matching product label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const productPatterns = [
+              { pattern: /FrameCut Editor/i, label: 'product: framecut-editor' },
+              { pattern: /InnoSage Gateway/i, label: 'product: innosage-gateway' },
+              { pattern: /InnoSage LLC/i, label: 'product: innosage-llc' },
+              { pattern: /InnoSage Tools/i, label: 'product: innosage-tools' },
+              { pattern: /Draft Extension/i, label: 'product: draft-extension' },
+              { pattern: /Notion(-style)? Markdown Editor/i, label: 'product: notion-editor' },
+              { pattern: /Agentic Core/i, label: 'product: agentic-core' }
+            ];
+
+            const matched = productPatterns.find(({ pattern }) => pattern.test(body));
+            const issueNumber = context.payload.issue.number;
+            const existingProductLabels = context.payload.issue.labels
+              .map((label) => label.name)
+              .filter((label) => label.startsWith('product: '));
+
+            for (const label of existingProductLabels) {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                name: label
+              });
+            }
+
+            const labelToAdd = matched ? matched.label : 'product: unlisted';
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              labels: [labelToAdd]
+            });

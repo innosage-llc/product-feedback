@@ -7,6 +7,14 @@ body:
     attributes:
       value: |
         If you have a general idea, please use [Discussions](../discussions) instead. Use this form only for concrete, actionable feature proposals.
+  - type: input
+    id: product
+    attributes:
+      label: Product
+      description: Which product should this feature apply to? Use the product name if you know it; we'll map it to a product label during triage.
+      placeholder: e.g., InnoSage Gateway
+    validations:
+      required: true
   - type: textarea
     id: problem
     attributes:

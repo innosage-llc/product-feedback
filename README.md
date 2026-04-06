@@ -12,6 +12,8 @@ To keep our triage process fast and effective, please route your request to the 
 * **Need private account support?** → Contact support@example.com
 * **Reporting a security issue?** → Read our [SECURITY.md](SECURITY.md)
 
+When you file a bug or feature request, fill out the `Product` field in the form. We use that to apply the right product label during triage, so you do not need to manage labels yourself.
+
 ## Expectations
 
 1. **Public Repository:** Everything posted here is visible to the public. Do not post API keys, passwords, extension tokens, or sensitive user data.

@@ -8,6 +8,14 @@ body:
       value: |
         Thanks for taking the time to report a bug! Please provide as much detail as possible so we can reproduce it. **Do not include any API keys or secrets.**
   - type: input
+    id: product
+    attributes:
+      label: Product
+      description: Which product is affected? Use the product name if you know it; we'll map it to a product label during triage.
+      placeholder: e.g., FrameCut Editor
+    validations:
+      required: true
+  - type: input
     id: summary
     attributes:
       label: Bug Summary
