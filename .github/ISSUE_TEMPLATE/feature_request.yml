@@ -1,0 +1,42 @@
+name: Feature Request
+description: Propose a tightly scoped, actionable feature. (For loose ideas, use Discussions).
+title: "[FEATURE]: "
+labels: ["type: enhancement", "status: needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        If you have a general idea, please use [Discussions](../discussions) instead. Use this form only for concrete, actionable feature proposals.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the friction or missing capability.
+      placeholder: e.g., I cannot currently export my local chat logs to a markdown file...
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe exactly how you think this should work.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: What other workarounds or alternative solutions have you thought about?
+    validations:
+      required: false
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency / Impact
+      description: How critical is this feature to your workflow?
+      options:
+        - Nice to have
+        - Saves me time daily
+        - Completely blocks my workflow without it
+    validations:
+      required: true

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a Question
+    url: https://github.com/product-feedback/discussions/new?category=q-a
+    about: Need help using the app or have a general question? Start a discussion here.
+  - name: Pitch an Idea
+    url: https://github.com/product-feedback/discussions/new?category=ideas
+    about: Want to suggest a new feature or improvement? Let's discuss it.
+  - name: Private Support
+    url: mailto:support@example.com
+    about: Need help with your billing or private account data? Email us directly.
