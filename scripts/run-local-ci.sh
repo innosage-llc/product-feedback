@@ -36,8 +36,9 @@ fi
 printf '\n==> Repository whitespace lint\n'
 git diff --check "origin/$BASE_BRANCH"...HEAD
 printf '\n==> GitHub Actions YAML lint\n'
+shopt -s nullglob
 workflow_files=(.github/workflows/*.yml .github/workflows/*.yaml)
-if [[ -e "${workflow_files[0]}" ]]; then
+if (( ${#workflow_files[@]} )); then
   ruby -e 'require "yaml"; ARGV.each { |path| YAML.load_file(path) }' "${workflow_files[@]}"
 fi
 gh pr comment "$PR_NUMBER" --body "### ✅ Local CI passed\n\nCommit: \`$(git rev-parse --short HEAD)\`\n\n_Run via \`./scripts/run-local-ci.sh\`._" >/dev/null || true
