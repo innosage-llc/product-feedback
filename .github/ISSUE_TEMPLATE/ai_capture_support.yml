@@ -1,0 +1,124 @@
+name: AI Capture Support
+description: Request Draft AI chat capture support for a site or report a capture issue.
+title: "[AI Capture]: "
+labels: ["type: support", "status: needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Draft AI capture. Please do not include API keys, private account data, or confidential chat content.
+  - type: input
+    id: product
+    attributes:
+      label: Product
+      description: Which product is affected? This is prefilled when opened from Draft.
+      placeholder: e.g., Notion-style Markdown Editor
+    validations:
+      required: true
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: Request type
+      description: What kind of AI capture help do you need?
+      options:
+        - Request support for a new AI chat site
+        - Report broken capture on a supported site
+        - Report missing or incorrect captured content
+        - Other AI capture issue
+    validations:
+      required: true
+  - type: input
+    id: target_url
+    attributes:
+      label: Target AI chat URL
+      description: Paste the AI chat page URL or closest public URL pattern here. Remove private tokens or sensitive parameters first.
+      placeholder: e.g., https://chat.example.ai/c/...
+    validations:
+      required: true
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: Briefly describe the support request or capture problem.
+      placeholder: e.g., Draft imports this chat as a generic page instead of preserving messages.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Where did this request come from?
+      description: This is prefilled when opened from Draft. Add any extra context if helpful.
+    validations:
+      required: false
+  - type: textarea
+    id: current_result
+    attributes:
+      label: What currently happens?
+      description: Describe what Draft captures today, or what happens when you try to import/capture the site.
+      placeholder: e.g., Messages are missing, code blocks lose formatting, images are skipped, or the page is not recognized.
+    validations:
+      required: true
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: What should Draft preserve?
+      description: List the content types you expected Draft to capture.
+      placeholder: e.g., Conversation turns, code blocks, inline code, math, citations, images, Mermaid diagrams.
+    validations:
+      required: true
+  - type: textarea
+    id: sample
+    attributes:
+      label: Safe sample or reproduction notes
+      description: Include public sample links, screenshots, or redacted reproduction steps. Do not paste private chats or secrets.
+      placeholder: |
+        1. Open ...
+        2. Capture/import with Draft.
+        3. Expected ...
+        4. Actual ...
+    validations:
+      required: false
+  - type: input
+    id: environment_browser
+    attributes:
+      label: Browser type
+      placeholder: e.g., Chrome 126, Safari 17, Firefox 126
+    validations:
+      required: false
+  - type: input
+    id: environment_os
+    attributes:
+      label: Operating system
+      placeholder: e.g., macOS Sonoma 14.4, Windows 11
+    validations:
+      required: false
+  - type: input
+    id: app_version
+    attributes:
+      label: Draft app version
+      placeholder: e.g., App v0.13.21
+    validations:
+      required: false
+  - type: textarea
+    id: user_agent
+    attributes:
+      label: User agent
+      description: Prefilled by Draft when available.
+      render: text
+    validations:
+      required: false
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Prefilled diagnostics
+      description: Draft fills this in automatically when opened from the supported platforms page.
+      render: text
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Security checklist
+      options:
+        - label: I have removed secrets, private account data, and confidential chat content from this request.
+          required: true
